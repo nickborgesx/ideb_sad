@@ -1,0 +1,33 @@
+CREATE TABLE dim_etapa_ensino (
+  id SERIAL PRIMARY KEY,
+  etapa VARCHAR(100),
+  anos_escolares VARCHAR(50)
+);
+
+CREATE TABLE dim_regiao (
+    id SERIAL PRIMARY KEY,
+    regiao VARCHAR(50) NOT NULL UNIQUE
+);
+
+CREATE TABLE dim_tempo (
+    id SERIAL PRIMARY KEY,
+    ano INTEGER
+);
+
+CREATE TABLE dim_rede_ensino (
+    id SERIAL PRIMARY KEY,
+    rede_ensino VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE fato_ideb (
+    id_tempo INTEGER REFERENCES dim_tempo(id),
+    id_rede_ensino INTEGER REFERENCES dim_rede_ensino(id),
+    id_etapa INTEGER REFERENCES dim_etapa_ensino(id),
+    id_regiao INTEGER REFERENCES dim_regiao(id),
+    taxa_aprovacao NUMERIC(5,1),
+    nota_saeb_matematica NUMERIC(6,2),
+    nota_saeb_lingua_portuguesa NUMERIC(6,2),
+    nota_saeb_media_padronizada NUMERIC(6,2),
+    ideb NUMERIC(3,1),
+    PRIMARY KEY (id_tempo, id_rede_ensino, id_etapa, id_regiao)
+);
