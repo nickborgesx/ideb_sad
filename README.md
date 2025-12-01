@@ -4,7 +4,7 @@ Este projeto apresenta um Data Mart desenvolvido para analisar os indicadores do
 
 ## 🛠️ Ferramentas Utilizadas
 
-**PostgreSQL** | **Pentaho** | **Power BI** | **MetaBase**
+**PostgreSQL** | **Pentaho** | **MetaBase**
 
 ## Modelagem Dimensional
 
